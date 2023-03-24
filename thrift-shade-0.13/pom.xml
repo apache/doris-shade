@@ -26,7 +26,7 @@ under the License.
     <artifactId>thrift-shade-0.13</artifactId>
     <version>1.0.1-SNAPSHOT</version>
     <properties>
-        <libethrift.version>0.13.0</libethrift.version>
+        <libethrift.version>0.14.0</libethrift.version>
     </properties>
     <dependencies>
         <dependency>
