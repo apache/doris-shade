@@ -27,7 +27,7 @@ on:
 
 jobs:
   license-header:
-    if: github.repository == 'apache/incubator-seatunnel'
+    if: github.repository == 'apache/doris-shade'
     name: License header
     runs-on: ubuntu-latest
     timeout-minutes: 10
