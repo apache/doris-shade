@@ -1,1 +1,3 @@
-* release thrift-0.16.0 shade-package
+# Apache Doris Shade Dependencies
+
+This repository contains a number of shaded dependencies for the Apache Doris project.
