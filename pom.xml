@@ -15,8 +15,7 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.apache</groupId>
@@ -25,7 +24,7 @@ under the License.
     </parent>
     <groupId>org.apache.doris</groupId>
     <artifactId>doris-shade</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Archetype - doris-shade</name>
     <url>https://doris.apache.org</url>
@@ -41,11 +40,22 @@ under the License.
         <url>https://github.com/apache/doris-shade</url>
         <connection>git@github.com:apache/doris-shade.git</connection>
         <developerConnection>scm:git:https://github.com/apache/doris-shade.git</developerConnection>
-    </scm>
+      <tag>HEAD</tag>
+  </scm>
 
     <modules>
-        <module>thrift-shade-0.16</module>
+        <module>thrift-shade-0.13</module>
+        <module>hadoop-shade-2</module>
+        <module>hudi-mr-shade-0.13</module>
+        <module>hive-shade-3</module>
+        <module>spring-shade-5</module>
     </modules>
+
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
     <profiles>
         <profile>
@@ -79,7 +89,7 @@ under the License.
                     <artifactId>maven-shade-plugin</artifactId>
                     <configuration>
                         <transformers>
-                            <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+                            <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
                             <transformer implementation="org.apache.maven.plugins.shade.resource.ApacheNoticeResourceTransformer">
                                 <projectName>Apache Doris-Shade</projectName>
                                 <encoding>UTF-8</encoding>
