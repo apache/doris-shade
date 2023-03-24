@@ -25,10 +25,6 @@ on:
     paths-ignore:
       - '**/*.md'
 
-concurrency:
-  group: lc-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: true
-
 jobs:
   license-header:
     if: github.repository == 'apache/incubator-seatunnel'
@@ -40,4 +36,4 @@ jobs:
         with:
           submodules: true
       - name: Check license header
-        uses: apache/skywalking-eyes@985866ce7e324454f61e22eb2db2e998db09d6f3
+        uses: apache/skywalking-eyes@main
