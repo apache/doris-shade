@@ -44,11 +44,7 @@ under the License.
   </scm>
 
     <modules>
-        <module>thrift-shade-0.13</module>
-        <module>hadoop-shade-2</module>
-        <module>hudi-mr-shade-0.13</module>
-        <module>hive-shade-3</module>
-        <module>spring-shade-5</module>
+        <module>hive-catalog-shade</module>
     </modules>
 
     <properties>
