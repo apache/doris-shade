@@ -25,13 +25,40 @@ under the License.
         <version>1.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>hive-shade-3</artifactId>
+    <artifactId>hive-catalog-shade</artifactId>
 
     <properties>
         <hive.version>3.1.3</hive.version>
         <hive-storage-api.version>2.8.1</hive-storage-api.version>
+        <!--We rewritten some hive methods, so we need to keep the same hadoop version as the main library-->
+        <hadoop.version>3.3.4</hadoop.version>
+        <iceberg-hive-metastore.version>1.1.0</iceberg-hive-metastore.version>
     </properties>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.apache.hadoop</groupId>
+                <artifactId>hadoop-common</artifactId>
+                <version>${hadoop.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.hadoop</groupId>
+                <artifactId>hadoop-hdfs</artifactId>
+                <version>${hadoop.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.hadoop</groupId>
+                <artifactId>hadoop-hdfs-client</artifactId>
+                <version>${hadoop.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.hadoop</groupId>
+                <artifactId>hadoop-auth</artifactId>
+                <version>${hadoop.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
     <dependencies>
         <dependency>
             <groupId>org.apache.hive</groupId>
@@ -58,9 +85,12 @@ under the License.
                     <groupId>org.apache.httpcomponents</groupId>
                     <artifactId>httpclient</artifactId>
                 </exclusion>
+                <exclusion>
+                    <artifactId>hadoop-common</artifactId>
+                    <groupId>org.apache.hadoop</groupId>
+                </exclusion>
             </exclusions>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.hive/hive-storage-api -->
         <dependency>
             <groupId>org.apache.hive</groupId>
             <artifactId>hive-storage-api</artifactId>
@@ -70,7 +100,6 @@ under the License.
             <groupId>org.apache.hive</groupId>
             <artifactId>hive-metastore</artifactId>
             <version>${hive.version}</version>
-            <scope>provided</scope>
             <exclusions>
                 <exclusion>
                     <artifactId>servlet-api</artifactId>
@@ -98,8 +127,12 @@ under the License.
                     <artifactId>hbase-client</artifactId>
                 </exclusion>
                 <exclusion>
-                    <groupId>org.apache.thrift</groupId>
-                    <artifactId>libthrift</artifactId>
+                    <artifactId>netty-all</artifactId>
+                    <groupId>io.netty</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>log4j</artifactId>
+                    <groupId>log4j</groupId>
                 </exclusion>
             </exclusions>
         </dependency>
@@ -150,20 +183,57 @@ under the License.
                     <artifactId>zookeeper</artifactId>
                 </exclusion>
                 <exclusion>
-                    <groupId>org.apache.thrift</groupId>
-                    <artifactId>libthrift</artifactId>
+                    <groupId>org.apache.velocity</groupId>
+                    <artifactId>velocity</artifactId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>commons-httpclient</artifactId>
+                    <groupId>commons-httpclient</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>calcite-core</artifactId>
+                    <groupId>org.apache.calcite</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>calcite-druid</artifactId>
+                    <groupId>org.apache.calcite</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>calcite-linq4j</artifactId>
+                    <groupId>org.apache.calcite</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>avatica</artifactId>
+                    <groupId>org.apache.calcite.avatica</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!--Since we access through the hive catalog, and the thrift version used by hive is not compatible with the
+current internal version used by doris, this jar must be introduced to complete to rename.-->
+        <dependency>
+            <groupId>org.apache.iceberg</groupId>
+            <artifactId>iceberg-hive-metastore</artifactId>
+            <version>${iceberg-hive-metastore.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.hive</groupId>
+            <artifactId>hive-standalone-metastore</artifactId>
+            <version>${hive.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.hadoop</groupId>
+                    <artifactId>hadoop-hdfs</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.hadoop</groupId>
+                    <artifactId>hadoop-common</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
         <dependency>
             <groupId>org.apache.hive</groupId>
-            <artifactId>hive-standalone-metastore</artifactId>
-            <version>3.1.3</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.hive</groupId>
             <artifactId>hive-classification</artifactId>
-            <version>3.1.3</version>
+            <version>${hive.version}</version>
         </dependency>
     </dependencies>
 
@@ -180,7 +250,8 @@ under the License.
                         <phase>package</phase>
                         <configuration>
                             <createDependencyReducedPom>true</createDependencyReducedPom>
-                            <dependencyReducedPomLocation>${project.basedir}/target/dependency-reduced-pom.xml</dependencyReducedPomLocation>
+                            <dependencyReducedPomLocation>${project.basedir}/target/dependency-reduced-pom.xml
+                            </dependencyReducedPomLocation>
                             <filters>
                                 <filter>
                                     <artifact>*:*</artifact>
@@ -207,6 +278,10 @@ under the License.
                                 <relocation>
                                     <pattern>com.google.gson</pattern>
                                     <shadedPattern>shade.doris.hive.com.google.gson</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>org.apache.thrift</pattern>
+                                    <shadedPattern>shade.doris.hive.org.apache.thrift</shadedPattern>
                                 </relocation>
                             </relocations>
                         </configuration>
