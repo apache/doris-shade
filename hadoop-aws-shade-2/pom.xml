@@ -25,48 +25,18 @@ under the License.
         <version>1.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>hadoop-shade-2</artifactId>
+    <artifactId>hadoop-aws-shade-2</artifactId>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <hadoop.version>2.10.2</hadoop.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.apache.hadoop/hadoop-annotations -->
         <dependency>
             <groupId>org.apache.hadoop</groupId>
-            <artifactId>hadoop-annotations</artifactId>
+            <artifactId>hadoop-aws</artifactId>
             <version>${hadoop.version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.hadoop/hadoop-auth -->
-        <dependency>
-            <groupId>org.apache.hadoop</groupId>
-            <artifactId>hadoop-auth</artifactId>
-            <version>${hadoop.version}</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.hadoop/hadoop-common -->
-        <dependency>
-            <groupId>org.apache.hadoop</groupId>
-            <artifactId>hadoop-common</artifactId>
-            <version>${hadoop.version}</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.hadoop/hadoop-hdfs -->
-        <dependency>
-            <groupId>org.apache.hadoop</groupId>
-            <artifactId>hadoop-hdfs</artifactId>
-            <version>${hadoop.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>netty-all</artifactId>
-                    <groupId>io.netty</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>jackson-databind</artifactId>
-                    <groupId>com.fasterxml.jackson.core</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
     </dependencies>
     <build>
         <plugins>
@@ -95,11 +65,7 @@ under the License.
                             <relocations>
                                 <relocation>
                                     <pattern>com.google.common</pattern>
-                                    <shadedPattern>shade.doris.hdfs.com.google.common</shadedPattern>
-                                </relocation>
-                                <relocation>
-                                    <pattern>io.netty</pattern>
-                                    <shadedPattern>shade.doris.hadoop.io.netty</shadedPattern>
+                                    <shadedPattern>shade.doris.hadoop.com.google.common</shadedPattern>
                                 </relocation>
                             </relocations>
                         </configuration>
