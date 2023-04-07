@@ -29,7 +29,7 @@ under the License.
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <hadoop.version>2.10.2</hadoop.version>
+        <hadoop.version>3.2.4</hadoop.version>
     </properties>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.apache.hadoop/hadoop-annotations -->
