@@ -49,6 +49,8 @@ under the License.
         <module>hudi-mr-shade-0.13</module>
         <module>hive-shade-3</module>
         <module>spring-shade-5</module>
+        <module>hadoop-cloud-shade-2</module>
+        <module>hadoop-aws-shade-2</module>
     </modules>
 
     <properties>

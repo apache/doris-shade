@@ -32,31 +32,6 @@ under the License.
         <hadoop.version>2.10.2</hadoop.version>
     </properties>
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.apache.hadoop/hadoop-aws -->
-        <dependency>
-            <groupId>org.apache.hadoop</groupId>
-            <artifactId>hadoop-aws</artifactId>
-            <version>${hadoop.version}</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.hadoop/hadoop-huaweicloud -->
-        <dependency>
-            <groupId>org.apache.hadoop</groupId>
-            <artifactId>hadoop-huaweicloud</artifactId>
-            <version>2.8.3</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>jackson-databind</artifactId>
-                    <groupId>com.fasterxml.jackson.core</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.hadoop/hadoop-aliyun -->
-        <dependency>
-            <groupId>org.apache.hadoop</groupId>
-            <artifactId>hadoop-aliyun</artifactId>
-            <version>${hadoop.version}</version>
-        </dependency>
-
         <!-- https://mvnrepository.com/artifact/org.apache.hadoop/hadoop-annotations -->
         <dependency>
             <groupId>org.apache.hadoop</groupId>
@@ -92,77 +67,7 @@ under the License.
             </exclusions>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.huaweicloud/esdk-obs-java-bundle -->
-        <dependency>
-            <groupId>com.huaweicloud</groupId>
-            <artifactId>esdk-obs-java-bundle</artifactId>
-            <version>3.21.8</version>
-        </dependency>
-
-
-        <!-- https://mvnrepository.com/artifact/com.qcloud.cos/hadoop-cos -->
-        <dependency>
-            <groupId>com.qcloud.cos</groupId>
-            <artifactId>hadoop-cos</artifactId>
-            <version>2.8.5-8.1.8</version>
-        </dependency>
     </dependencies>
-    <profiles>
-        <!-- for custom internal repository -->
-        <profile>
-            <id>custom-env</id>
-            <activation>
-                <property>
-                    <name>env.CUSTOM_MAVEN_REPO</name>
-                </property>
-            </activation>
-            <repositories>
-                <repository>
-                    <id>custom-nexus</id>
-                    <url>${env.CUSTOM_MAVEN_REPO}</url>
-                </repository>
-            </repositories>
-            <pluginRepositories>
-                <pluginRepository>
-                    <id>custom-nexus</id>
-                    <url>${env.CUSTOM_MAVEN_REPO}</url>
-                </pluginRepository>
-            </pluginRepositories>
-        </profile>
-        <!-- for general repository -->
-        <profile>
-            <id>general-env</id>
-            <activation>
-                <property>
-                    <name>!env.CUSTOM_MAVEN_REPO</name>
-                </property>
-            </activation>
-            <repositories>
-                <!-- for java-cup -->
-                <repository>
-                    <id>cloudera-thirdparty</id>
-                    <url>https://repository.cloudera.com/content/repositories/third-party/</url>
-                </repository>
-                <!-- for bdb je -->
-                <repository>
-                    <id>oracleReleases</id>
-                    <url>http://download.oracle.com/maven</url>
-                </repository>
-                <!-- for huawei obs sdk -->
-                <repository>
-                    <id>huawei-obs-sdk</id>
-                    <url>https://repo.huaweicloud.com/repository/maven/huaweicloudsdk/</url>
-                </repository>
-            </repositories>
-            <pluginRepositories>
-                <!-- for cup-maven-plugin -->
-                <pluginRepository>
-                    <id>spring-plugins</id>
-                    <url>http://repo.spring.io/plugins-release/</url>
-                </pluginRepository>
-            </pluginRepositories>
-        </profile>
-    </profiles>
     <build>
         <plugins>
             <plugin>
@@ -191,6 +96,10 @@ under the License.
                                 <relocation>
                                     <pattern>com.google.common</pattern>
                                     <shadedPattern>shade.doris.hdfs.com.google.common</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>io.netty</pattern>
+                                    <shadedPattern>shade.doris.hadoop.io.netty</shadedPattern>
                                 </relocation>
                             </relocations>
                         </configuration>
