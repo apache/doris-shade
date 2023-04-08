@@ -70,6 +70,22 @@ under the License.
                     <artifactId>log4j</artifactId>
                 </exclusion>
                 <exclusion>
+                    <groupId>org.apache.logging.log4j</groupId>
+                    <artifactId>log4j-1.2-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.logging.log4j</groupId>
+                    <artifactId>log4j-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.logging.log4j</groupId>
+                    <artifactId>log4j-web</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.logging.log4j</groupId>
+                    <artifactId>log4j-slf4j-impl</artifactId>
+                </exclusion>
+                <exclusion>
                     <groupId>io.netty</groupId>
                     <artifactId>netty</artifactId>
                 </exclusion>
@@ -89,12 +105,49 @@ under the License.
                     <artifactId>hadoop-common</artifactId>
                     <groupId>org.apache.hadoop</groupId>
                 </exclusion>
+                <exclusion>
+                    <groupId>org.eclipse.jetty</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.arrow</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>commons-codec</groupId>
+                    <artifactId>commons-codec</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.zookeeper</groupId>
+                    <artifactId>zookeeper</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.commons</groupId>
+                    <artifactId>commons-compress</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.hadoop</groupId>
+                    <artifactId>hadoop-yarn-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.hadoop</groupId>
+                    <artifactId>hadoop-yarn-common</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.hadoop</groupId>
+                    <artifactId>hadoop-annotations</artifactId>
+                </exclusion>
             </exclusions>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.hive/hive-storage-api -->
         <dependency>
             <groupId>org.apache.hive</groupId>
             <artifactId>hive-storage-api</artifactId>
-            <version>${hive-storage-api.version}</version>
+            <version>${hive.storage.api.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.hive</groupId>
@@ -145,6 +198,10 @@ under the License.
                 <exclusion>
                     <groupId>org.apache.logging.log4j</groupId>
                     <artifactId>log4j-1.2-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.logging.log4j</groupId>
+                    <artifactId>log4j-slf4j-impl</artifactId>
                 </exclusion>
                 <exclusion>
                     <groupId>org.codehaus.groovy</groupId>
@@ -206,14 +263,28 @@ under the License.
                     <artifactId>avatica</artifactId>
                     <groupId>org.apache.calcite.avatica</groupId>
                 </exclusion>
+                <exclusion>
+                    <groupId>org.apache.commons</groupId>
+                    <artifactId>commons-compress</artifactId>
+                </exclusion>
             </exclusions>
         </dependency>
         <!--Since we access through the hive catalog, and the thrift version used by hive is not compatible with the
-current internal version used by doris, this jar must be introduced to complete to rename.-->
+        current internal version used by doris, this jar must be introduced to complete to rename.-->
         <dependency>
             <groupId>org.apache.iceberg</groupId>
             <artifactId>iceberg-hive-metastore</artifactId>
             <version>${iceberg-hive-metastore.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.httpcomponents.client5</groupId>
+                    <artifactId>httpclient5</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.roaringbitmap</groupId>
+                    <artifactId>RoaringBitmap</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.apache.hive</groupId>
@@ -227,6 +298,30 @@ current internal version used by doris, this jar must be introduced to complete 
                 <exclusion>
                     <groupId>org.apache.hadoop</groupId>
                     <artifactId>hadoop-common</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.logging.log4j</groupId>
+                    <artifactId>log4j-1.2-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.logging.log4j</groupId>
+                    <artifactId>log4j-slf4j-impl</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.logging.log4j</groupId>
+                    <artifactId>log4j-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.dropwizard.metrics</groupId>
+                    <artifactId>metrics-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.dropwizard.metrics</groupId>
+                    <artifactId>metrics-jvm</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.dropwizard.metrics</groupId>
+                    <artifactId>metrics-json</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
@@ -282,6 +377,10 @@ current internal version used by doris, this jar must be introduced to complete 
                                 <relocation>
                                     <pattern>org.apache.thrift</pattern>
                                     <shadedPattern>shade.doris.hive.org.apache.thrift</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>com.google.protobuf</pattern>
+                                    <shadedPattern>shade.doris.hive.com.google.protobuf</shadedPattern>
                                 </relocation>
                             </relocations>
                         </configuration>
