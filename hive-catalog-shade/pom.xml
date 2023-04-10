@@ -382,6 +382,10 @@ under the License.
                                     <pattern>com.google.protobuf</pattern>
                                     <shadedPattern>shade.doris.hive.com.google.protobuf</shadedPattern>
                                 </relocation>
+                                <relocation>
+                                    <pattern>org.apache.http.impl</pattern>
+                                    <shadedPattern>shade.doris.hive.org.apache.http.impl</shadedPattern>
+                                </relocation>                              
                             </relocations>
                         </configuration>
                     </execution>
