@@ -385,7 +385,11 @@ under the License.
                                 <relocation>
                                     <pattern>org.apache.http.impl</pattern>
                                     <shadedPattern>shade.doris.hive.org.apache.http.impl</shadedPattern>
-                                </relocation>                              
+                                </relocation>
+                                <relocation>
+                                    <pattern>org.apache.commons.lang3</pattern>
+                                    <shadedPattern>shade.doris.hive.org.apache.commons.lang3</shadedPattern>
+                                </relocation>                                     
                             </relocations>
                         </configuration>
                     </execution>
