@@ -22,7 +22,7 @@ under the License.
     <parent>
         <groupId>org.apache.doris</groupId>
         <artifactId>doris-shade</artifactId>
-        <version>1.0.1-SNAPSHOT</version>
+        <version>1.0.2-SNAPSHOT</version>
     </parent>
 
     <artifactId>hive-shade-3</artifactId>
@@ -30,6 +30,7 @@ under the License.
     <properties>
         <hive.version>3.1.3</hive.version>
         <hive-storage-api.version>2.8.1</hive-storage-api.version>
+        <hadoop.version>3.3.4</hadoop.version>
     </properties>
     <dependencyManagement>
         <dependencies>
