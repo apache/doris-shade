@@ -443,6 +443,10 @@ under the License.
                                     <pattern>org.apache.commons.cli</pattern>
                                     <shadedPattern>shade.doris.hive.org.apache.commons.cli</shadedPattern>
                                 </relocation>
+                                <relocation>
+                                    <pattern>com.google.flatbuffers</pattern>
+                                    <shadedPattern>shade.doris.hive.com.google.flatbuffers</shadedPattern>
+                                </relocation>
                             </relocations>
                         </configuration>
                     </execution>
