@@ -1,3 +1,7 @@
-# Apache Doris Shade Dependencies
+## Changes
 
-This repository contains a number of shaded dependencies for the Apache Doris project.
+- Add hadoop dependency shade
+- Add thrift dependency shade
+- Add hive catalog dependency shade
+- Add kerby dependency shade
+- Add Spring5 dependency shade
