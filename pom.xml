@@ -24,7 +24,7 @@ under the License.
     </parent>
     <groupId>org.apache.doris</groupId>
     <artifactId>doris-shade</artifactId>
-    <version>1.0.2-SNAPSHOT</version>
+    <version>1.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Archetype - doris-shade</name>
     <url>https://doris.apache.org</url>
@@ -52,6 +52,7 @@ under the License.
         <module>hadoop-cloud-shade-2</module>
         <module>hadoop-aws-shade-2</module>
         <module>kerby-shade-1.0</module>
+        <module>hive-catalog-shade</module>
     </modules>
 
     <properties>
