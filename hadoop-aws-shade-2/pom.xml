@@ -20,7 +20,7 @@ under the License.
     <parent>
         <groupId>org.apache.doris</groupId>
         <artifactId>doris-shade</artifactId>
-        <version>1.0.1</version>
+        <version>1.0.2-SNAPSHOT</version>
     </parent>
 
     <artifactId>hadoop-aws-shade-2</artifactId>
