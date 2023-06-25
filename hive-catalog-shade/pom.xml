@@ -447,6 +447,10 @@ under the License.
                                     <pattern>com.google.flatbuffers</pattern>
                                     <shadedPattern>shade.doris.hive.com.google.flatbuffers</shadedPattern>
                                 </relocation>
+                                <relocation>
+                                        <pattern>org.apache.httpcomponents</pattern>
+                                        <shadePattern>shade.doris.hive.org.apache.httpcomponents</shadePattern>
+                                </relocation>
                             </relocations>
                         </configuration>
                     </execution>
