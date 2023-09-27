@@ -22,7 +22,7 @@ under the License.
     <parent>
         <groupId>org.apache.doris</groupId>
         <artifactId>doris-shade</artifactId>
-        <version>1.0.1-SNAPSHOT</version>
+        <version>1.0.1-zd-SNAPSHOT</version>
     </parent>
 
     <artifactId>hive-shade-3</artifactId>
