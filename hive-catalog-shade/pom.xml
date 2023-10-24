@@ -379,6 +379,26 @@ under the License.
                 </exclusion>
             </exclusions>
         </dependency>
+        <!-- for aliyun dlf -->
+        <dependency>
+            <groupId>com.aliyun.datalake</groupId>
+            <artifactId>metastore-client-hive3</artifactId>
+            <version>0.2.14</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.aliyun</groupId>
+                    <artifactId>tea</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.aliyun</groupId>
+                    <artifactId>tea-openapi</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.aliyun</groupId>
+                    <artifactId>tea-util</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
     </dependencies>
 
     <build>
@@ -407,6 +427,10 @@ under the License.
                                 </filter>
                             </filters>
                             <relocations>
+                                <relocation>
+                                    <pattern>com.aliyun.datalake</pattern>
+                                    <shadedPattern>shade.doris.com.aliyun.datalake</shadedPattern>
+                                </relocation>
                                 <relocation>
                                     <pattern>org.apache.commons.io</pattern>
                                     <shadedPattern>shade.doris.org.apache.commons.io</shadedPattern>
@@ -448,8 +472,8 @@ under the License.
                                     <shadedPattern>shade.doris.hive.com.google.flatbuffers</shadedPattern>
                                 </relocation>
                                 <relocation>
-                                        <pattern>org.apache.httpcomponents</pattern>
-                                        <shadedPattern>shade.doris.hive.org.apache.httpcomponents</shadedPattern>
+                                    <pattern>org.apache.httpcomponents</pattern>
+                                    <shadedPattern>shade.doris.hive.org.apache.httpcomponents</shadedPattern>
                                 </relocation>
                             </relocations>
                         </configuration>
