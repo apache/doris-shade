@@ -1,7 +1,7 @@
 ## Changes
 
-- Add hadoop dependency shade
-- Add thrift dependency shade
-- Add hive catalog dependency shade
-- Add kerby dependency shade
-- Add Spring5 dependency shade
+- [fix](spark-load) remove comflict jar for spark_load of Doris v1.2 (#27)
+
+- [fix](multi-catalog)fix dependencies for dlf (#26) 
+
+
