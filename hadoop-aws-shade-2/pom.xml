@@ -22,7 +22,7 @@ under the License.
     <parent>
         <groupId>org.apache.doris</groupId>
         <artifactId>doris-shade</artifactId>
-        <version>1.0.2-SNAPSHOT</version>
+        <version>1.0.3-SNAPSHOT</version>
     </parent>
 
     <artifactId>hadoop-aws-shade-2</artifactId>
@@ -36,6 +36,11 @@ under the License.
             <groupId>org.apache.hadoop</groupId>
             <artifactId>hadoop-aws</artifactId>
             <version>${hadoop.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>19.0</version>
         </dependency>
     </dependencies>
     <build>
