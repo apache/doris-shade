@@ -8,4 +8,8 @@
 
 - [update] update paimon to 0.6 (#32)
 
+### 1.0.4
+
+- [update][hive-catalog-shade] upgrade iceberg to 1.4.3 
+
 
