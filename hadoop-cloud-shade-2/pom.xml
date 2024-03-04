@@ -41,16 +41,16 @@ under the License.
             <version>3.21.8</version>
             <exclusions>
                 <exclusion>
-                    <artifactId>org.apache.logging.log4j</artifactId>
-                    <groupId>log4j-core</groupId>
+                    <groupId>org.apache.logging.log4j</groupId>
+                    <artifactId>log4j-core</artifactId>
                 </exclusion>
                 <exclusion>
-                    <artifactId>org.apache.logging.log4j</artifactId>
-                    <groupId>log4j-api</groupId>
+                    <groupId>org.apache.logging.log4j</groupId>
+                    <artifactId>log4j-api</artifactId>
                 </exclusion>
                 <exclusion>
-                    <artifactId>stax</artifactId>
-                    <groupId>stax-api</groupId>
+                    <groupId>stax</groupId>
+                    <artifactId>stax-api</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
