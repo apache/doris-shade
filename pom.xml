@@ -24,7 +24,7 @@ under the License.
     </parent>
     <groupId>org.apache.doris</groupId>
     <artifactId>doris-shade</artifactId>
-    <version>1.0.5-SNAPSHOT</version>
+    <version>1.1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Archetype - doris-shade</name>
     <url>https://doris.apache.org</url>
@@ -44,20 +44,12 @@ under the License.
   </scm>
 
     <modules>
-        <module>thrift-shade-0.13</module>
-        <module>hadoop-shade-2</module>
-        <module>hudi-mr-shade-0.13</module>
-        <module>hive-shade-3</module>
-        <module>spring-shade-5</module>
-        <module>hadoop-cloud-shade-2</module>
-        <module>hadoop-aws-shade-2</module>
-        <module>kerby-shade-1.0</module>
         <module>hive-catalog-shade</module>
     </modules>
 
     <properties>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
