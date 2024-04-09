@@ -20,7 +20,7 @@ under the License.
     <parent>
         <groupId>org.apache.doris</groupId>
         <artifactId>doris-shade</artifactId>
-        <version>1.0.5-SNAPSHOT</version>
+        <version>CK-1.0.0.1-SNAPSHOT</version>
     </parent>
 
     <artifactId>hive-catalog-shade</artifactId>
@@ -56,6 +56,66 @@ under the License.
                 <artifactId>hadoop-auth</artifactId>
                 <version>${hadoop.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.apache.avro</groupId>
+                <artifactId>avro</artifactId>
+                <version>1.11.3</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>2.15.2</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>2.15.2</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.dataformat</groupId>
+                <artifactId>jackson-dataformat-yaml</artifactId>
+                <version>2.15.2</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.ivy</groupId>
+                <artifactId>ivy</artifactId>
+                <version>2.5.2</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.apache.parquet/parquet-hadoop-bundle -->
+            <dependency>
+                <groupId>org.apache.parquet</groupId>
+                <artifactId>parquet-hadoop-bundle</artifactId>
+                <version>1.13.1</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.bouncycastle/bcprov-jdk18on -->
+            <!-- https://mvnrepository.com/artifact/org.bouncycastle/bcprov-jdk15on -->
+            <dependency>
+                <groupId>org.bouncycastle</groupId>
+                <artifactId>bcprov-jdk15on</artifactId>
+                <version>1.70</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>32.1.2-jre</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+            <dependency>
+                <groupId>com.google.code.gson</groupId>
+                <artifactId>gson</artifactId>
+                <version>2.10</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.zookeeper</groupId>
+                <artifactId>zookeeper</artifactId>
+                <scope>provided</scope>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
     <dependencies>
@@ -168,6 +228,10 @@ under the License.
                 <exclusion>
                     <groupId>tomcat</groupId>
                     <artifactId>jasper-compiler</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.google.guava</groupId>
+                    <artifactId>guava</artifactId>
                 </exclusion>
                 <!-- confilict with parquet version in iceberg -->
                 <exclusion>
