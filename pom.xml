@@ -24,7 +24,7 @@ under the License.
     </parent>
     <groupId>org.apache.doris</groupId>
     <artifactId>doris-shade</artifactId>
-    <version>1.0.4-SNAPSHOT</version>
+    <version>1.0.5-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Archetype - doris-shade</name>
     <url>https://doris.apache.org</url>
