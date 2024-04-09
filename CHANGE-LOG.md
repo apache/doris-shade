@@ -10,6 +10,10 @@
 
 ### 1.0.4
 
-- [update][hive-catalog-shade] upgrade iceberg to 1.4.3 
+- [update][hive-catalog-shade] upgrade iceberg to 1.4.3
+
+### 1.0.5
+
+- [Fix]Fix wrong maven coordinates (#37)
 
 
