@@ -20,7 +20,7 @@ under the License.
     <parent>
         <groupId>org.apache.doris</groupId>
         <artifactId>doris-shade</artifactId>
-        <version>CK-1.0.0.1-SNAPSHOT</version>
+        <version>CK-1.0.0.3-SNAPSHOT</version>
     </parent>
 
     <artifactId>hive-catalog-shade</artifactId>
@@ -56,12 +56,57 @@ under the License.
                 <artifactId>hadoop-auth</artifactId>
                 <version>${hadoop.version}</version>
             </dependency>
+<!--            <dependency>
+                <groupId>org.apache.hadoop</groupId>
+                <artifactId>hadoop-yarn-server-resourcemanager</artifactId>
+                <scope>provided</scope>
+            </dependency>-->
+            <dependency>
+                <groupId>commons-logging</groupId>
+                <artifactId>commons-logging</artifactId>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.hadoop</groupId>
+                <artifactId>hadoop-yarn-server-common</artifactId>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.google.code</groupId>
+                <artifactId>findbugs</artifactId>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>commons-codec</groupId>
+                <artifactId>commons-codec</artifactId>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>commons-cli</groupId>
+                <artifactId>commons-cli</artifactId>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.google.protobuf</groupId>
+                <artifactId>protobuf-java</artifactId>
+                <scope>provided</scope>
+            </dependency>
             <dependency>
                 <groupId>org.apache.avro</groupId>
                 <artifactId>avro</artifactId>
                 <version>1.11.3</version>
             </dependency>
-            <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-databind</artifactId>
@@ -75,9 +120,51 @@ under the License.
                 <scope>provided</scope>
             </dependency>
             <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>2.15.2</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
                 <groupId>com.fasterxml.jackson.dataformat</groupId>
                 <artifactId>jackson-dataformat-yaml</artifactId>
                 <version>2.15.2</version>
+                <scope>provided</scope>
+            </dependency>
+            
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.dropwizard.metrics</groupId>
+                <artifactId>metrics-core</artifactId>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.dropwizard.metrics</groupId>
+                <artifactId>metrics-jvm</artifactId>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.dropwizard.metrics</groupId>
+                <artifactId>metrics-json</artifactId>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>commons-lang</groupId>
+                <artifactId>commons-lang</artifactId>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.carrotsearch</groupId>
+                <artifactId>hppc</artifactId>
                 <scope>provided</scope>
             </dependency>
             <dependency>
@@ -103,7 +190,7 @@ under the License.
                 <artifactId>guava</artifactId>
                 <version>32.1.2-jre</version>
             </dependency>
-
+            
             <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
             <dependency>
                 <groupId>com.google.code.gson</groupId>
@@ -207,6 +294,12 @@ under the License.
             <groupId>org.apache.hive</groupId>
             <artifactId>hive-storage-api</artifactId>
             <version>${hive.storage.api.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.apache.hive</groupId>
@@ -418,6 +511,10 @@ under the License.
                     <groupId>org.apache.hadoop</groupId>
                     <artifactId>hadoop-hdfs</artifactId>
                 </exclusion>
+                <exclusion>
+                    <groupId>com.fasterxml.jackson.dataformat</groupId>
+                    <artifactId>jackson-dataformat-yaml</artifactId>
+                </exclusion>
             </exclusions>
         </dependency>
         <dependency>
@@ -503,10 +600,10 @@ under the License.
                                     <pattern>com.google.common</pattern>
                                     <shadedPattern>shade.doris.hive.com.google.common</shadedPattern>
                                 </relocation>
-                                <relocation>
+<!--                                <relocation>
                                     <pattern>com.fasterxml.jackson</pattern>
                                     <shadedPattern>shade.doris.hive.com.fasterxml.jackson</shadedPattern>
-                                </relocation>
+                                </relocation>-->
                                 <relocation>
                                     <pattern>com.google.gson</pattern>
                                     <shadedPattern>shade.doris.hive.com.google.gson</shadedPattern>
@@ -516,21 +613,17 @@ under the License.
                                     <shadedPattern>shade.doris.hive.org.apache.thrift</shadedPattern>
                                 </relocation>
                                 <relocation>
-                                    <pattern>com.google.protobuf</pattern>
-                                    <shadedPattern>shade.doris.hive.com.google.protobuf</shadedPattern>
-                                </relocation>
-                                <relocation>
                                     <pattern>org.apache.http.impl</pattern>
                                     <shadedPattern>shade.doris.hive.org.apache.http.impl</shadedPattern>
                                 </relocation>
-                                <relocation>
+       <!--                         <relocation>
                                     <pattern>org.apache.commons.lang3</pattern>
                                     <shadedPattern>shade.doris.hive.org.apache.commons.lang3</shadedPattern>
                                 </relocation>
                                 <relocation>
                                     <pattern>org.apache.commons.cli</pattern>
                                     <shadedPattern>shade.doris.hive.org.apache.commons.cli</shadedPattern>
-                                </relocation>
+                                </relocation>-->
                                 <relocation>
                                     <pattern>com.google.flatbuffers</pattern>
                                     <shadedPattern>shade.doris.hive.com.google.flatbuffers</shadedPattern>
