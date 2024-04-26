@@ -1,19 +1,13 @@
 ## Changes
 
-### 1.0.3
+### 2.0.0
+- upgrade avro to 1.11.3
+- upgrade parquet to 1.13.1
+- upgrade guava to 32.1.2-jre
+- upgrade gson to 2.10
+- upgrade bcprov to 1.70
+- upgrade paimon to 0.7.0
+- exclude some dependencies
 
-- [fix](spark-load) remove comflict jar for spark_load of Doris v1.2 (#27)
-
-- [fix](multi-catalog)fix dependencies for dlf (#26) 
-
-- [update] update paimon to 0.6 (#32)
-
-### 1.0.4
-
-- [update][hive-catalog-shade] upgrade iceberg to 1.4.3
-
-### 1.0.5
-
-- [Fix]Fix wrong maven coordinates (#37)
-
-
+### 2.0.1
+- Set HikariCP Scope to Provided (#42)
