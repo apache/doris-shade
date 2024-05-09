@@ -11,3 +11,6 @@
 
 ### 2.0.1
 - Set HikariCP Scope to Provided (#42)
+
+### 2.0.2
+- The com.aliyun.datalake package should not be renamed
