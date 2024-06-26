@@ -4,6 +4,8 @@
 #### 2.1.0
 - Upgrade paimon to 0.8.0
 - Upgrade bcpkix-jdkon15 dependency to bcpkix-jdkon18
+#### 2.1.1
+- Upgrade paimon to 0.8.1
 ### 2.0
 #### 2.0.0
 - upgrade avro to 1.11.3
