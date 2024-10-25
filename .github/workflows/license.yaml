@@ -24,7 +24,8 @@ on:
       - master
     paths-ignore:
       - '**/*.md'
-
+permissions:
+  contents: write
 jobs:
   license-header:
     if: github.repository == 'apache/doris-shade'
