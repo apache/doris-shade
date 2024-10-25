@@ -29,7 +29,6 @@ permissions:
 jobs:
   auto_cherry_pick:
     runs-on: ubuntu-latest
-    if: ${{ contains(github.event.pull_request.labels.*.name, 'dev/3.0.x') && github.event.pull_request.merged == true }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
