@@ -19,8 +19,6 @@ name: Auto Cherry-Pick to Branch
 
 on:
   pull_request:
-    types:
-      - closed
     branches:
       - master
 permissions:
