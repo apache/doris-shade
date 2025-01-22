@@ -8,6 +8,9 @@
 - Upgrade paimon to 0.8.1
 #### 2.1.2
 - Upgrade paimon to 0.9.0
+#### 2.1.3
+- Upgrade paimon to 1.0.0
+- Upgrade iceberg to 1.6.1
 ### 2.0
 #### 2.0.0
 - upgrade avro to 1.11.3
