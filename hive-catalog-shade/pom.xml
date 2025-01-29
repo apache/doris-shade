@@ -26,7 +26,7 @@ under the License.
     <artifactId>hive-catalog-shade</artifactId>
 
     <properties>
-        <hive.version>3.1.3</hive.version>
+        <hive.version>4.0.1</hive.version>
         <!--We rewritten some hive methods, so we need to keep the same hadoop version as the main library-->
         <hadoop.version>3.3.6</hadoop.version>
         <hive.storage.api.version>2.8.1</hive.storage.api.version>
