@@ -4,6 +4,8 @@
 #### 3.0.0
 - Upgrade paimon to 1.1.1
 - Upgrade iceberg to 1.9.1
+#### 3.0.1
+- Upgrade avro to 1.12 to match iceberg 1.9.1 
 
 ### 2.1
 #### 2.1.0
