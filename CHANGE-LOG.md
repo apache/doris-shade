@@ -1,5 +1,11 @@
 ## Changes
 
+### 3.1
+#### 3.1.0
+- Removed unnecessary dependencies including Hadoop, Parquet, Gson, Jackson, and other related libraries.
+- Retained only the core runtime dependencies.
+- Skipped shading/renaming for several HDFS-related JARs since HDFS has already been upgraded and is now fully compatible with the new version.
+
 ### 3.0
 #### 3.0.0
 - Upgrade paimon to 1.1.1
