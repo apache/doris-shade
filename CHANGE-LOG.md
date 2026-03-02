@@ -1,6 +1,10 @@
 ## Changes
 
 ### 3.1
+#### 3.1.1
+- Upgrade paimon to 1.3.1
+- Upgrade iceberg to 1.10.1
+- Shade com.aliyun.tea to avoid dependency conflicts
 #### 3.1.0
 - Removed unnecessary dependencies including Hadoop, Parquet, Gson, Jackson, and other related libraries.
 - Retained only the core runtime dependencies.
