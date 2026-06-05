@@ -20,7 +20,7 @@ under the License.
     <parent>
         <groupId>org.apache.doris</groupId>
         <artifactId>doris-shade</artifactId>
-        <version>3.1.1-SNAPSHOT</version>
+        <version>3.1.2-SNAPSHOT</version>
     </parent>
 
     <artifactId>hive-catalog-shade</artifactId>
@@ -638,6 +638,15 @@ under the License.
                                 <relocation>
                                     <pattern>com.aliyun.tea</pattern>
                                     <shadedPattern>shade.doris.hive.com.aliyun.tea</shadedPattern>
+                                </relocation>
+                                <!-- Hive/Hadoop transitively bundle an ancient, unrelocated fastutil
+                                     (6.5.x). Relocate it so it cannot shadow the modern
+                                     it.unimi.dsi:fastutil(-core) on Doris FE/BE classpaths; otherwise the
+                                     ancient Long2ObjectOpenHashMap wins and throws NoSuchMethodError on
+                                     computeIfAbsent(long, Long2ObjectFunction). -->
+                                <relocation>
+                                    <pattern>it.unimi.dsi.fastutil</pattern>
+                                    <shadedPattern>shade.doris.hive.it.unimi.dsi.fastutil</shadedPattern>
                                 </relocation>
                             </relocations>
                         </configuration>
