@@ -1,6 +1,8 @@
 ## Changes
 
 ### 3.1
+#### 3.1.2
+- Upgrade paimon to 1.4.2
 #### 3.1.1
 - Upgrade paimon to 1.3.1
 - Upgrade iceberg to 1.10.1
