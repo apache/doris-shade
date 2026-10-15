@@ -1,0 +1,10 @@
+
+Third-party licenses in the shaded binary distribution
+-----------------------------------------------------
+
+The shaded JAR includes third-party components under their respective licenses.
+Their bundled license texts are retained in this file, META-INF/LICENSE.txt,
+the root LICENSE file, and the component-specific license files under META-INF.
+See META-INF/DEPENDENCIES for component coordinates and META-INF/NOTICE for
+attribution notices. In particular, the CDDL terms for javax.transaction:jta
+are retained in META-INF/LICENSE.txt.
