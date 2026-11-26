@@ -24,10 +24,26 @@ github:
     squash: true
     merge: false
     rebase: false
+  dependabot_alerts: true
+  dependabot_updates: true
   protected_branches:
     master:
-      required_status_checks:
-        strict: true
+      required_pull_request_reviews:
+        dismiss_stale_reviews: true
+        required_approving_review_count: 1
+  rulesets:
+    - name: Protected branches
+      type: branch
+      branches:
+        includes:
+          - "~DEFAULT_BRANCH"
+          - "branch-*"
+          - "[0-9]*.x"
+          # Legacy release branches. Maven still pushes to dev/*-release branches.
+          - "[0-9]*-release"
+      restrict_deletion: true
+      restrict_force_push: true
+      required_conversation_resolution: true
       required_pull_request_reviews:
         dismiss_stale_reviews: true
         required_approving_review_count: 1
